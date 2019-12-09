@@ -61,4 +61,5 @@ class FirebaseAuthService {
             print(error)
         }
     }
+    private init(){}
 }
