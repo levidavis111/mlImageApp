@@ -14,7 +14,7 @@ fileprivate enum FirestoreCollections: String {
     case posts
 }
 
-enum sortingCriteria: String {
+enum SortingCriteria: String {
     case fromNewestToOldest = "dateCreated"
     var shouldSortDescending: Bool {
         switch self {
@@ -77,65 +77,51 @@ class FirestoreService {
     
 //    MARK: - Posts
     
+    func createPost(post: Post, completion: @escaping (Result <(), Error>) -> ()) {
+        var fields = post.fieldsDict
+        fields["dateCreated"] = Date()
+        db.collection(FirestoreCollections.posts.rawValue).addDocument(data: fields) { (error) in
+            if let error = error {
+                completion(.failure(error))
+            } else {
+                completion(.success(()))
+            }
+        }
+    }
     
+    func getAllPosts(sortingCriteria: SortingCriteria? = nil, completion: @escaping (Result <[Post], Error>) -> ()) {
+        let completionHandler: FIRQuerySnapshotBlock = {(snapshot, error) in
+            if let error = error {completion(.failure(error))} else {
+                let posts = snapshot?.documents.compactMap({ (snapshot) -> Post? in
+                    let postID = snapshot.documentID
+                    let post = Post(from: snapshot.data(), id: postID)
+                    return post
+                })
+                completion(.success(posts ?? []))
+            }
+        }
+        
+        let collection = db.collection(FirestoreCollections.posts.rawValue)
+        if let sortingCriteria = sortingCriteria {
+            let query = collection.order(by: sortingCriteria.rawValue, descending: sortingCriteria.shouldSortDescending)
+            query.getDocuments(completion: completionHandler)
+        } else {
+            collection.getDocuments(completion: completionHandler)
+        }
+        
+    }
+    
+    func getUserPosts(for userID: String, completion: @escaping (Result <[Post], Error>) -> ()) {
+        db.collection(FirestoreCollections.posts.rawValue).whereField("creatorID", isEqualTo: userID).getDocuments { (snapshot, error) in
+            if let error = error {completion(.failure(error))} else {
+                let posts = snapshot?.documents.compactMap({ (snapshot) -> Post? in
+                    let postID = snapshot.documentID
+                    let post = Post(from: snapshot.data(), id: postID)
+                    return post
+                })
+                completion(.success(posts ?? []))
+            }
+        }
+    }
+    private init(){}
 }
-
-/**
-
- class FirestoreService {
-     //    MARK: - Posts
-     func createPost(post: Post, completion: @escaping (Result <(), Error>) -> ()){
-         var fields = post.fieldsDict
-         fields["dateCreated"] = Date()
-         db.collection(FireStoreCollections.posts.rawValue).addDocument(data: fields) { (error) in
-             if let error = error {
-                 completion(.failure(error))
-             } else {
-                 completion(.success(()))
-             }
-         }
-     }
-     
-     func getAllPosts(sortingCriteria: SortingCriteria? = nil, completion: @escaping (Result <[Post], Error>) -> ()) {
-         let completionHandler: FIRQuerySnapshotBlock = {(snapshot, error) in
-             if let error = error {
-                 completion(.failure(error))
-             } else {
-                 let posts = snapshot?.documents.compactMap({ (snapshot) -> Post? in
-                     let postID = snapshot.documentID
-                     let post = Post(from: snapshot.data(), id: postID)
-                     return post
-                 })
-                 completion(.success(posts ?? []))
-             }
-         }
-         
-         let collection = db.collection(FireStoreCollections.posts.rawValue)
-         if let sortingCriteria = sortingCriteria {
-             let query = collection.order(by: sortingCriteria.rawValue, descending: sortingCriteria.shouldSortDescending)
-             query.getDocuments(completion: completionHandler)
-         } else {
-             collection.getDocuments(completion: completionHandler)
-         }
-     }
-     
-     func getPosts(forUserID: String, completion: @escaping (Result <[Post], Error>) -> ()) {
-         
-         
-         db.collection(FireStoreCollections.posts.rawValue).whereField("creatorID", isEqualTo: forUserID).getDocuments { (snapshot, error) in
-             if let error = error {
-                 completion(.failure(error))
-             } else {
-                 let posts = snapshot?.documents.compactMap({ (snapshot) -> Post? in
-                     let postID = snapshot.documentID
-                     let post = Post(from: snapshot.data(), id: postID)
-                     return post
-                 })
-                 completion(.success(posts ?? []))
-             }
-         }
-     }
-     
-     private init() {}
- }
- */
