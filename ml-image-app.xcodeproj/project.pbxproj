@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -11,12 +11,13 @@
 		2808CA3647267755840E4C05 /* Pods_ml_image_appTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EA83DE1E1DE167AA34E61B4 /* Pods_ml_image_appTests.framework */; };
 		FCA62AC9239EDC6700998242 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA62AC8239EDC6700998242 /* AppDelegate.swift */; };
 		FCA62ACB239EDC6700998242 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA62ACA239EDC6700998242 /* SceneDelegate.swift */; };
-		FCA62ACD239EDC6700998242 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA62ACC239EDC6700998242 /* ViewController.swift */; };
-		FCA62AD0239EDC6700998242 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FCA62ACE239EDC6700998242 /* Main.storyboard */; };
 		FCA62AD2239EDC6800998242 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FCA62AD1239EDC6800998242 /* Assets.xcassets */; };
 		FCA62AD5239EDC6800998242 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FCA62AD3239EDC6800998242 /* LaunchScreen.storyboard */; };
 		FCA62AE0239EDC6800998242 /* ml_image_appTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA62ADF239EDC6800998242 /* ml_image_appTests.swift */; };
 		FCA62AEB239EDDD400998242 /* Fritz-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FCA62AEA239EDDD400998242 /* Fritz-Info.plist */; };
+		FCA62AEF239EDF5900998242 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA62AEE239EDF5900998242 /* LoginViewController.swift */; };
+		FCA62AF1239EDF7100998242 /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA62AF0239EDF7100998242 /* CreateAccountViewController.swift */; };
+		FCA62AF3239EE13800998242 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FCA62AF2239EE13800998242 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,8 +40,6 @@
 		FCA62AC5239EDC6700998242 /* ml-image-app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ml-image-app.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FCA62AC8239EDC6700998242 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FCA62ACA239EDC6700998242 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		FCA62ACC239EDC6700998242 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		FCA62ACF239EDC6700998242 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FCA62AD1239EDC6800998242 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FCA62AD4239EDC6800998242 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FCA62AD6239EDC6800998242 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -48,6 +47,9 @@
 		FCA62ADF239EDC6800998242 /* ml_image_appTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ml_image_appTests.swift; sourceTree = "<group>"; };
 		FCA62AE1239EDC6800998242 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FCA62AEA239EDDD400998242 /* Fritz-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Fritz-Info.plist"; sourceTree = "<group>"; };
+		FCA62AEE239EDF5900998242 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		FCA62AF0239EDF7100998242 /* CreateAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
+		FCA62AF2239EE13800998242 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,7 +89,6 @@
 				8C4D7B25D1F9A8AC3AC6253F /* Pods-ml-image-appTests.debug.xcconfig */,
 				0E028012034B205E2E248526 /* Pods-ml-image-appTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -114,14 +115,11 @@
 		FCA62AC7239EDC6700998242 /* ml-image-app */ = {
 			isa = PBXGroup;
 			children = (
-				FCA62AC8239EDC6700998242 /* AppDelegate.swift */,
-				FCA62ACA239EDC6700998242 /* SceneDelegate.swift */,
-				FCA62ACC239EDC6700998242 /* ViewController.swift */,
-				FCA62ACE239EDC6700998242 /* Main.storyboard */,
-				FCA62AD1239EDC6800998242 /* Assets.xcassets */,
-				FCA62AD3239EDC6800998242 /* LaunchScreen.storyboard */,
+				FCA62AED239EDF3700998242 /* Controllers */,
+				FCA62AEC239EDF2C00998242 /* Supporting Files */,
 				FCA62AD6239EDC6800998242 /* Info.plist */,
 				FCA62AEA239EDDD400998242 /* Fritz-Info.plist */,
+				FCA62AF2239EE13800998242 /* GoogleService-Info.plist */,
 			);
 			path = "ml-image-app";
 			sourceTree = "<group>";
@@ -133,6 +131,26 @@
 				FCA62AE1239EDC6800998242 /* Info.plist */,
 			);
 			path = "ml-image-appTests";
+			sourceTree = "<group>";
+		};
+		FCA62AEC239EDF2C00998242 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				FCA62AC8239EDC6700998242 /* AppDelegate.swift */,
+				FCA62ACA239EDC6700998242 /* SceneDelegate.swift */,
+				FCA62AD1239EDC6800998242 /* Assets.xcassets */,
+				FCA62AD3239EDC6800998242 /* LaunchScreen.storyboard */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		FCA62AED239EDF3700998242 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				FCA62AEE239EDF5900998242 /* LoginViewController.swift */,
+				FCA62AF0239EDF7100998242 /* CreateAccountViewController.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -220,9 +238,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				FCA62AD5239EDC6800998242 /* LaunchScreen.storyboard in Resources */,
+				FCA62AF3239EE13800998242 /* GoogleService-Info.plist in Resources */,
 				FCA62AD2239EDC6800998242 /* Assets.xcassets in Resources */,
 				FCA62AEB239EDDD400998242 /* Fritz-Info.plist in Resources */,
-				FCA62AD0239EDC6700998242 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -304,7 +322,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FCA62ACD239EDC6700998242 /* ViewController.swift in Sources */,
+				FCA62AF1239EDF7100998242 /* CreateAccountViewController.swift in Sources */,
+				FCA62AEF239EDF5900998242 /* LoginViewController.swift in Sources */,
 				FCA62AC9239EDC6700998242 /* AppDelegate.swift in Sources */,
 				FCA62ACB239EDC6700998242 /* SceneDelegate.swift in Sources */,
 			);
@@ -329,14 +348,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		FCA62ACE239EDC6700998242 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				FCA62ACF239EDC6700998242 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		FCA62AD3239EDC6800998242 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

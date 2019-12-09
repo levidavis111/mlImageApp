@@ -6,6 +6,10 @@ target 'ml-image-app' do
   use_frameworks!
 
   # Pods for ml-image-app
+pod 'Firebase/Auth'
+pod 'Firebase/Firestore'
+pod 'Firebase/Storage'
+
 pod 'Fritz'
 
   target 'ml-image-appTests' do
