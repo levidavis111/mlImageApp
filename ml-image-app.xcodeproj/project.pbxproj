@@ -22,6 +22,7 @@
 		FCA62AF8239EE7AD00998242 /* FirebaseStorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA62AF7239EE7AD00998242 /* FirebaseStorageService.swift */; };
 		FCA62AFA239EECD400998242 /* FirestoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA62AF9239EECD400998242 /* FirestoreService.swift */; };
 		FCA62AFD239EEE5B00998242 /* AppUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA62AFC239EEE5B00998242 /* AppUser.swift */; };
+		FCA62AFF239EF4D000998242 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA62AFE239EF4D000998242 /* Post.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +59,7 @@
 		FCA62AF7239EE7AD00998242 /* FirebaseStorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseStorageService.swift; sourceTree = "<group>"; };
 		FCA62AF9239EECD400998242 /* FirestoreService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreService.swift; sourceTree = "<group>"; };
 		FCA62AFC239EEE5B00998242 /* AppUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUser.swift; sourceTree = "<group>"; };
+		FCA62AFE239EF4D000998242 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -177,6 +179,7 @@
 			isa = PBXGroup;
 			children = (
 				FCA62AFC239EEE5B00998242 /* AppUser.swift */,
+				FCA62AFE239EF4D000998242 /* Post.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -356,6 +359,7 @@
 				FCA62AF1239EDF7100998242 /* CreateAccountViewController.swift in Sources */,
 				FCA62AEF239EDF5900998242 /* LoginViewController.swift in Sources */,
 				FCA62AC9239EDC6700998242 /* AppDelegate.swift in Sources */,
+				FCA62AFF239EF4D000998242 /* Post.swift in Sources */,
 				FCA62AF8239EE7AD00998242 /* FirebaseStorageService.swift in Sources */,
 				FCA62ACB239EDC6700998242 /* SceneDelegate.swift in Sources */,
 			);
