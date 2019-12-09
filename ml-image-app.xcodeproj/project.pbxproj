@@ -20,6 +20,8 @@
 		FCA62AF3239EE13800998242 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FCA62AF2239EE13800998242 /* GoogleService-Info.plist */; };
 		FCA62AF6239EE49C00998242 /* FirebaseAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA62AF5239EE49C00998242 /* FirebaseAuthService.swift */; };
 		FCA62AF8239EE7AD00998242 /* FirebaseStorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA62AF7239EE7AD00998242 /* FirebaseStorageService.swift */; };
+		FCA62AFA239EECD400998242 /* FirestoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA62AF9239EECD400998242 /* FirestoreService.swift */; };
+		FCA62AFD239EEE5B00998242 /* AppUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA62AFC239EEE5B00998242 /* AppUser.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +56,8 @@
 		FCA62AF2239EE13800998242 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FCA62AF5239EE49C00998242 /* FirebaseAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAuthService.swift; sourceTree = "<group>"; };
 		FCA62AF7239EE7AD00998242 /* FirebaseStorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseStorageService.swift; sourceTree = "<group>"; };
+		FCA62AF9239EECD400998242 /* FirestoreService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreService.swift; sourceTree = "<group>"; };
+		FCA62AFC239EEE5B00998242 /* AppUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUser.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +124,7 @@
 			isa = PBXGroup;
 			children = (
 				FCA62AED239EDF3700998242 /* Controllers */,
+				FCA62AFB239EEE4400998242 /* Models */,
 				FCA62AF4239EE44600998242 /* Firebase Service */,
 				FCA62AEC239EDF2C00998242 /* Supporting Files */,
 				FCA62AD6239EDC6800998242 /* Info.plist */,
@@ -163,8 +168,17 @@
 			children = (
 				FCA62AF5239EE49C00998242 /* FirebaseAuthService.swift */,
 				FCA62AF7239EE7AD00998242 /* FirebaseStorageService.swift */,
+				FCA62AF9239EECD400998242 /* FirestoreService.swift */,
 			);
 			path = "Firebase Service";
+			sourceTree = "<group>";
+		};
+		FCA62AFB239EEE4400998242 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				FCA62AFC239EEE5B00998242 /* AppUser.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -336,6 +350,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FCA62AFD239EEE5B00998242 /* AppUser.swift in Sources */,
+				FCA62AFA239EECD400998242 /* FirestoreService.swift in Sources */,
 				FCA62AF6239EE49C00998242 /* FirebaseAuthService.swift in Sources */,
 				FCA62AF1239EDF7100998242 /* CreateAccountViewController.swift in Sources */,
 				FCA62AEF239EDF5900998242 /* LoginViewController.swift in Sources */,
