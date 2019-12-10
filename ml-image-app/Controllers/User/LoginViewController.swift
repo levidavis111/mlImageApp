@@ -98,11 +98,28 @@ class LoginViewController: UIViewController {
     
 //    MARK: - Obj-C Functions
     
-    @objc private func validateFields() {}
+    @objc private func validateFields() {
+        guard emailTextField.hasText, passwordTextField.hasText else {loginButton.backgroundColor = .lightGray; loginButton.isEnabled = false; return}
+        loginButton.backgroundColor = .cyan
+        loginButton.isEnabled = true
+    }
     
-    @objc private func tryLogin() {}
+    @objc private func showSignUp() {
+        let signupVC = CreateAccountViewController()
+        signupVC.modalPresentationStyle = .formSheet
+        present(signupVC, animated: true)
+    }
     
-    @objc private func showSignUp() {}
+    @objc private func tryLogin() {
+        guard let email = emailTextField.text, let password = passwordTextField.text else {addAlert(title: "Error", message: "Please fill out all fields"); return}
+        guard email.isValidEmail else {addAlert(title: "Error", message: "Please enter a valid email"); return}
+        guard password.isValidPassword else {addAlert(title: "Error", message: "Please enter a valid password"); return}
+        
+        FirebaseAuthService.manager.loginUser(email: email, password: password) { (result) in
+            self.handleLoginResponse(with: result)
+        }
+        
+    }
     
     @objc private func keyboardSelectorTriggered(sender: Notification) {
 //        print(sender.userInfo)
@@ -110,6 +127,57 @@ class LoginViewController: UIViewController {
     }
     
 //    MARK: - Private Functions
+    
+    private func addAlert(title: String? = nil, message: String? = nil) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okayAction = UIAlertAction(title: "Okay", style: .default, handler: nil)
+        alertController.addAction(okayAction)
+    }
+    
+    private func handleLoginResponse(with result: Result <(), Error>) {
+        switch result {
+        case .failure(let error):
+            print(error)
+            addAlert(title: "Error", message: "Could not log in. No User Found")
+        case .success(()):
+            print("Hi!")
+//            TODO: Create VC to add here
+        }
+    }
+    
+    /**
+     private func handleLoginResponse(with result: Result<(), Error>) {
+         switch result {
+         case .failure(let error):
+             print(error)
+             showAlert(with: "Error", and: "Could not log in. No user found")
+         case .success:
+             
+            guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+                 let sceneDelegate = windowScene.delegate as? SceneDelegate, let window = sceneDelegate.window
+                 else {return}
+             
+             let user = FirebaseAuthService.manager.currentUser
+             let experience = user?.displayName
+             UIView.transition(with: window, duration: 0.3, options: .transitionCrossDissolve, animations: {
+                 
+                 if experience == "event" {
+                     let eventVC = EventSearchViewController()
+                     let navController = UINavigationController(rootViewController: eventVC)
+                     window.rootViewController = navController
+                 } else if experience == "art"{
+                     let artVC = ArtSearchViewController()
+                     let navController = UINavigationController(rootViewController: artVC)
+                     window.rootViewController = navController
+                 } else {
+                     window.rootViewController = LoginViewController()
+                 }
+                 window.makeKeyAndVisible()
+                 
+             }, completion: nil)
+         }
+     }
+     */
     
     private func moveViewsToAccomadateKeyboard(with keyboardRect: CGRect, and duration: Double) {
         guard keyboardRect != CGRect.zero else {
@@ -206,17 +274,4 @@ class LoginViewController: UIViewController {
          createAccountButton.heightAnchor.constraint(equalToConstant: 50)].forEach{$0.isActive = true}
     }
     
-    
-    
 }
-
-/**
- private func setupCreateAccountButton() {
-     createAccountButton.translatesAutoresizingMaskIntoConstraints = false
-     NSLayoutConstraint.activate([
-         createAccountButton.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-         createAccountButton.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-         createAccountButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
-         createAccountButton.heightAnchor.constraint(equalToConstant: 50)])
- }
- */
