@@ -1,5 +1,5 @@
 //
-//  LoginViewController.swift
+//  CreateAccountViewController.swift
 //  ml-image-app
 //
 //  Created by Levi Davis on 12/9/19.
@@ -9,11 +9,11 @@
 import UIKit
 import FirebaseAuth
 
-class LoginViewController: UIViewController {
+class CreateAccountViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
     }
-    
+
 }

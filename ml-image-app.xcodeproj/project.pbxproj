@@ -23,6 +23,7 @@
 		FCA62AFA239EECD400998242 /* FirestoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA62AF9239EECD400998242 /* FirestoreService.swift */; };
 		FCA62AFD239EEE5B00998242 /* AppUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA62AFC239EEE5B00998242 /* AppUser.swift */; };
 		FCA62AFF239EF4D000998242 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA62AFE239EF4D000998242 /* Post.swift */; };
+		FCA62B0323A028BF00998242 /* StringValidations.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA62B0223A028BF00998242 /* StringValidations.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +61,7 @@
 		FCA62AF9239EECD400998242 /* FirestoreService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreService.swift; sourceTree = "<group>"; };
 		FCA62AFC239EEE5B00998242 /* AppUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUser.swift; sourceTree = "<group>"; };
 		FCA62AFE239EF4D000998242 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		FCA62B0223A028BF00998242 /* StringValidations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringValidations.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +130,7 @@
 				FCA62AED239EDF3700998242 /* Controllers */,
 				FCA62AFB239EEE4400998242 /* Models */,
 				FCA62AF4239EE44600998242 /* Firebase Service */,
+				FCA62B0123A0283700998242 /* Utilities */,
 				FCA62AEC239EDF2C00998242 /* Supporting Files */,
 				FCA62AD6239EDC6800998242 /* Info.plist */,
 				FCA62AEA239EDDD400998242 /* Fritz-Info.plist */,
@@ -159,8 +162,7 @@
 		FCA62AED239EDF3700998242 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				FCA62AEE239EDF5900998242 /* LoginViewController.swift */,
-				FCA62AF0239EDF7100998242 /* CreateAccountViewController.swift */,
+				FCA62B0023A0274100998242 /* User */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -182,6 +184,23 @@
 				FCA62AFE239EF4D000998242 /* Post.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		FCA62B0023A0274100998242 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				FCA62AEE239EDF5900998242 /* LoginViewController.swift */,
+				FCA62AF0239EDF7100998242 /* CreateAccountViewController.swift */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
+		FCA62B0123A0283700998242 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				FCA62B0223A028BF00998242 /* StringValidations.swift */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -360,6 +379,7 @@
 				FCA62AEF239EDF5900998242 /* LoginViewController.swift in Sources */,
 				FCA62AC9239EDC6700998242 /* AppDelegate.swift in Sources */,
 				FCA62AFF239EF4D000998242 /* Post.swift in Sources */,
+				FCA62B0323A028BF00998242 /* StringValidations.swift in Sources */,
 				FCA62AF8239EE7AD00998242 /* FirebaseStorageService.swift in Sources */,
 				FCA62ACB239EDC6700998242 /* SceneDelegate.swift in Sources */,
 			);
