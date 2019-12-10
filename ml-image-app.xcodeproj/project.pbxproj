@@ -24,6 +24,7 @@
 		FCA62AFD239EEE5B00998242 /* AppUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA62AFC239EEE5B00998242 /* AppUser.swift */; };
 		FCA62AFF239EF4D000998242 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA62AFE239EF4D000998242 /* Post.swift */; };
 		FCA62B0323A028BF00998242 /* StringValidations.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA62B0223A028BF00998242 /* StringValidations.swift */; };
+		FCA62B0623A0414B00998242 /* MainMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA62B0523A0414B00998242 /* MainMenuViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +63,7 @@
 		FCA62AFC239EEE5B00998242 /* AppUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUser.swift; sourceTree = "<group>"; };
 		FCA62AFE239EF4D000998242 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		FCA62B0223A028BF00998242 /* StringValidations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringValidations.swift; sourceTree = "<group>"; };
+		FCA62B0523A0414B00998242 /* MainMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,6 +164,7 @@
 		FCA62AED239EDF3700998242 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				FCA62B0423A0411900998242 /* App */,
 				FCA62B0023A0274100998242 /* User */,
 			);
 			path = Controllers;
@@ -201,6 +204,14 @@
 				FCA62B0223A028BF00998242 /* StringValidations.swift */,
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		FCA62B0423A0411900998242 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				FCA62B0523A0414B00998242 /* MainMenuViewController.swift */,
+			);
+			path = App;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -374,6 +385,7 @@
 			files = (
 				FCA62AFD239EEE5B00998242 /* AppUser.swift in Sources */,
 				FCA62AFA239EECD400998242 /* FirestoreService.swift in Sources */,
+				FCA62B0623A0414B00998242 /* MainMenuViewController.swift in Sources */,
 				FCA62AF6239EE49C00998242 /* FirebaseAuthService.swift in Sources */,
 				FCA62AF1239EDF7100998242 /* CreateAccountViewController.swift in Sources */,
 				FCA62AEF239EDF5900998242 /* LoginViewController.swift in Sources */,

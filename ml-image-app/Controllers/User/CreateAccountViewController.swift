@@ -131,27 +131,13 @@ class CreateAccountViewController: UIViewController {
             showAlert(title: "Error", message: "Error: Could not create account")
         case .success(()):
             print("AppUser Created")
-//            TODO: Create vc to segue to
+            guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+                let sceneDelegate = windowScene.delegate as? SceneDelegate, let window = sceneDelegate.window else {return}
             
-            /**
-             guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-             //                        let sceneDelegate = windowScene.delegate as? SceneDelegate, let window = sceneDelegate.window
-             //                        else {return}
-             //
-             //                    UIView.transition(with: window, duration: 0.3, options: .transitionCrossDissolve, animations: {
-             //                        if self.userExperience == UserExperience.event.rawValue {
-             //                            let eventVC = EventSearchViewController()
-             //                            let navController = UINavigationController(rootViewController: eventVC)
-             //                            window.rootViewController = navController
-             //                        } else {
-             //                            let artVC = ArtSearchViewController()
-             //                            let navController = UINavigationController(rootViewController: artVC)
-             //                            window.rootViewController = navController
-             //                        }
-             //
-             //                    }, completion: nil)
-             //                }
-             //            }*/
+            let mainVC = MainMenuViewController()
+            let navController = UINavigationController(rootViewController: mainVC)
+            window.rootViewController = navController
+            window.makeKeyAndVisible()
         }
     }
     

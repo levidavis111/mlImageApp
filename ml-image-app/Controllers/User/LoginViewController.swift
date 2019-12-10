@@ -141,43 +141,16 @@ class LoginViewController: UIViewController {
             addAlert(title: "Error", message: "Could not log in. No User Found")
         case .success(()):
             print("Hi!")
-//            TODO: Create VC to add here
+            
+            guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+                let sceneDelegate = windowScene.delegate as? SceneDelegate, let window = sceneDelegate.window else {return}
+            
+            let mainVC = MainMenuViewController()
+            let navController = UINavigationController(rootViewController: mainVC)
+            window.rootViewController = navController
+            window.makeKeyAndVisible()
         }
     }
-    
-    /**
-     private func handleLoginResponse(with result: Result<(), Error>) {
-         switch result {
-         case .failure(let error):
-             print(error)
-             showAlert(with: "Error", and: "Could not log in. No user found")
-         case .success:
-             
-            guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-                 let sceneDelegate = windowScene.delegate as? SceneDelegate, let window = sceneDelegate.window
-                 else {return}
-             
-             let user = FirebaseAuthService.manager.currentUser
-             let experience = user?.displayName
-             UIView.transition(with: window, duration: 0.3, options: .transitionCrossDissolve, animations: {
-                 
-                 if experience == "event" {
-                     let eventVC = EventSearchViewController()
-                     let navController = UINavigationController(rootViewController: eventVC)
-                     window.rootViewController = navController
-                 } else if experience == "art"{
-                     let artVC = ArtSearchViewController()
-                     let navController = UINavigationController(rootViewController: artVC)
-                     window.rootViewController = navController
-                 } else {
-                     window.rootViewController = LoginViewController()
-                 }
-                 window.makeKeyAndVisible()
-                 
-             }, completion: nil)
-         }
-     }
-     */
     
     private func moveViewsToAccomadateKeyboard(with keyboardRect: CGRect, and duration: Double) {
         guard keyboardRect != CGRect.zero else {
