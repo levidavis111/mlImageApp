@@ -26,6 +26,7 @@
 		FCA62B0323A028BF00998242 /* StringValidations.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA62B0223A028BF00998242 /* StringValidations.swift */; };
 		FCA62B0623A0414B00998242 /* MainMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA62B0523A0414B00998242 /* MainMenuViewController.swift */; };
 		FCA62B0823A083DB00998242 /* HairColorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA62B0723A083DB00998242 /* HairColorViewController.swift */; };
+		FCA62B0A23A08BDB00998242 /* HairPredictor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA62B0923A08BDB00998242 /* HairPredictor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +67,7 @@
 		FCA62B0223A028BF00998242 /* StringValidations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringValidations.swift; sourceTree = "<group>"; };
 		FCA62B0523A0414B00998242 /* MainMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuViewController.swift; sourceTree = "<group>"; };
 		FCA62B0723A083DB00998242 /* HairColorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HairColorViewController.swift; sourceTree = "<group>"; };
+		FCA62B0923A08BDB00998242 /* HairPredictor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HairPredictor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -204,6 +206,7 @@
 			isa = PBXGroup;
 			children = (
 				FCA62B0223A028BF00998242 /* StringValidations.swift */,
+				FCA62B0923A08BDB00998242 /* HairPredictor.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -387,6 +390,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FCA62AFD239EEE5B00998242 /* AppUser.swift in Sources */,
+				FCA62B0A23A08BDB00998242 /* HairPredictor.swift in Sources */,
 				FCA62AFA239EECD400998242 /* FirestoreService.swift in Sources */,
 				FCA62B0623A0414B00998242 /* MainMenuViewController.swift in Sources */,
 				FCA62AF6239EE49C00998242 /* FirebaseAuthService.swift in Sources */,
@@ -553,6 +557,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = VRUAAAF4H3;
 				INFOPLIST_FILE = "ml-image-app/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -572,6 +577,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = VRUAAAF4H3;
 				INFOPLIST_FILE = "ml-image-app/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

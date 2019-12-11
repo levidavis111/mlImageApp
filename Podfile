@@ -6,11 +6,17 @@ target 'ml-image-app' do
   use_frameworks!
 
   # Pods for ml-image-app
+  # Firebase
 pod 'Firebase/Auth'
 pod 'Firebase/Firestore'
 pod 'Firebase/Storage'
 
+  # Fritz
 pod 'Fritz'
+pod 'ColorSlider'
+pod 'Fritz/VisionSegmentationModel/Hair/Fast'
+pod 'Fritz/Vision'
+pod 'Fritz/VisionSegmentationModel/Hair/Fast'
 
   target 'ml-image-appTests' do
     inherit! :search_paths
