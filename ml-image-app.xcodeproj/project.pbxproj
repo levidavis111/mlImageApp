@@ -25,6 +25,7 @@
 		FCA62AFF239EF4D000998242 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA62AFE239EF4D000998242 /* Post.swift */; };
 		FCA62B0323A028BF00998242 /* StringValidations.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA62B0223A028BF00998242 /* StringValidations.swift */; };
 		FCA62B0623A0414B00998242 /* MainMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA62B0523A0414B00998242 /* MainMenuViewController.swift */; };
+		FCA62B0823A083DB00998242 /* HairColorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA62B0723A083DB00998242 /* HairColorViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +65,7 @@
 		FCA62AFE239EF4D000998242 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		FCA62B0223A028BF00998242 /* StringValidations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringValidations.swift; sourceTree = "<group>"; };
 		FCA62B0523A0414B00998242 /* MainMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuViewController.swift; sourceTree = "<group>"; };
+		FCA62B0723A083DB00998242 /* HairColorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HairColorViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -210,6 +212,7 @@
 			isa = PBXGroup;
 			children = (
 				FCA62B0523A0414B00998242 /* MainMenuViewController.swift */,
+				FCA62B0723A083DB00998242 /* HairColorViewController.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -393,6 +396,7 @@
 				FCA62AFF239EF4D000998242 /* Post.swift in Sources */,
 				FCA62B0323A028BF00998242 /* StringValidations.swift in Sources */,
 				FCA62AF8239EE7AD00998242 /* FirebaseStorageService.swift in Sources */,
+				FCA62B0823A083DB00998242 /* HairColorViewController.swift in Sources */,
 				FCA62ACB239EDC6700998242 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

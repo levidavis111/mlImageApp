@@ -10,17 +10,16 @@ import UIKit
 
 class MainMenuViewController: UIViewController {
     
-//    lazy var stackView: UIStackView = {
-//        let stackView = UIStackView()
-//
-//        return stackView
-//    }()
+//    MARK: - UI Elements
     
     lazy var aButton: UIButton = {
         let button = UIButton()
         button.setTitle("A Button", for: .normal)
         button.setTitleColor(.black, for: .normal)
         button.backgroundColor = .blue
+        button.isSpringLoaded = true
+        button.showsTouchWhenHighlighted = true
+        button.addTarget(self, action: #selector(aButtonPressed), for: .touchUpInside)
         return button
     }()
     
@@ -29,6 +28,9 @@ class MainMenuViewController: UIViewController {
         button.setTitle("B Button", for: .normal)
         button.setTitleColor(.black, for: .normal)
         button.backgroundColor = .blue
+        button.isSpringLoaded = true
+        button.showsTouchWhenHighlighted = true
+        button.addTarget(self, action: #selector(bButtonPressed), for: .touchUpInside)
         return button
     }()
     
@@ -37,6 +39,9 @@ class MainMenuViewController: UIViewController {
         button.setTitle("C Button", for: .normal)
         button.setTitleColor(.black, for: .normal)
         button.backgroundColor = .blue
+        button.isSpringLoaded = true
+        button.showsTouchWhenHighlighted = true
+        button.addTarget(self, action: #selector(cButtonPressed), for: .touchUpInside)
         return button
     }()
     
@@ -45,24 +50,55 @@ class MainMenuViewController: UIViewController {
         button.setTitle("D Button", for: .normal)
         button.setTitleColor(.black, for: .normal)
         button.backgroundColor = .blue
+        button.isSpringLoaded = true
+        button.showsTouchWhenHighlighted = true
+        button.addTarget(self, action: #selector(dButtonPressed), for: .touchUpInside)
         return button
     }()
+    
+//    MARK: - Lifecyle Methods
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         setupStackView()
+        setupNavBar()
     }
     
+//    MARK: - Obj-C Functions
     
+    @objc private func aButtonPressed() {
+        let hairColorVC = HairColorViewController()
+        navigationController?.pushViewController(hairColorVC, animated: true)
+    }
     
+    @objc private func bButtonPressed() {
+    print("b")
+    }
     
+    @objc private func cButtonPressed() {
+    print("c")
+    }
+    
+    @objc private func dButtonPressed() {
+    print("d")
+    }
+    
+    @objc private func logout() {
+        FirebaseAuthService.manager.logoutUser()
+        guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene, let sceneDelegate = windowScene.delegate as? SceneDelegate, let window = sceneDelegate.window else {return}
+        window.rootViewController = LoginViewController()
+        window.makeKeyAndVisible()
+    }
+    
+//    MARK: - Private Functions
+    
+    private func setupNavBar() {
+        let rightButton = UIBarButtonItem(title: "logout", style: .plain, target: self, action: #selector(logout))
+        self.navigationItem.rightBarButtonItem = rightButton
+    }
     
 //    MARK: - Setup UI
-    
-//    private func addSubviews() {
-//
-//    }
     
     private func constrainSubviews() {
         setupStackView()
@@ -84,20 +120,3 @@ class MainMenuViewController: UIViewController {
     }
 
 }
-
-/**
- private func setupLoginStackView() {
-     let stackView = UIStackView(arrangedSubviews: [emailTextField, passwordTextField,loginButton])
-     stackView.axis = .vertical
-     stackView.spacing = 15
-     stackView.distribution = .fillEqually
-     self.view.addSubview(stackView)
-     
-     stackView.translatesAutoresizingMaskIntoConstraints = false
-     NSLayoutConstraint.activate([
-         stackView.bottomAnchor.constraint(equalTo: createAccountButton.topAnchor, constant: -50),
-         stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-         stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
-         stackView.heightAnchor.constraint(equalToConstant: 130)])
- }
- */
