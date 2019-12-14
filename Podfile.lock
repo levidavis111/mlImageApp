@@ -216,6 +216,8 @@ PODS:
     - Fritz/Vision (= 5.0.6)
   - Fritz/Vision (5.0.6):
     - FritzBase/Vision (= 5.0.6)
+  - Fritz/VisionObjectModel/Fast (5.0.6):
+    - FritzVisionObjectModelFast (~> 5.0.1)
   - Fritz/VisionSegmentationModel/Hair/Fast (5.0.6):
     - FritzVisionHairSegmentationModelFast (~> 5.0.1)
   - Fritz/VisionSegmentationModel/Pet/Accurate (5.0.6):
@@ -231,6 +233,8 @@ PODS:
     - FritzBase/CoreMLHelpers (= 5.0.6)
     - FritzBase/ManagedModel (= 5.0.6)
   - FritzVisionHairSegmentationModelFast (5.0.1):
+    - FritzBase/Vision (~> 5.0.1)
+  - FritzVisionObjectModelFast (5.0.1):
     - FritzBase/Vision (~> 5.0.1)
   - FritzVisionPetSegmentationModelAccurate (5.0.1):
     - FritzBase/Vision (~> 5.0.1)
@@ -285,6 +289,7 @@ DEPENDENCIES:
   - Firebase/Storage
   - Fritz
   - Fritz/Vision
+  - Fritz/VisionObjectModel/Fast
   - Fritz/VisionSegmentationModel/Hair/Fast
   - Fritz/VisionSegmentationModel/Pet/Accurate
   - Fritz/VisionStyleModel/Paintings
@@ -305,6 +310,7 @@ SPEC REPOS:
     - Fritz
     - FritzBase
     - FritzVisionHairSegmentationModelFast
+    - FritzVisionObjectModelFast
     - FritzVisionPetSegmentationModelAccurate
     - FritzVisionStyleModelPaintings
     - GoogleDataTransport
@@ -331,6 +337,7 @@ SPEC CHECKSUMS:
   Fritz: 02312f8088d1b64c7b539e638d44d6ca835634c4
   FritzBase: 958b20c4abef6abde993e43914ac1571e117de00
   FritzVisionHairSegmentationModelFast: 2b9e40f8e6987ac2d7c903bd84fc07e5a83fc636
+  FritzVisionObjectModelFast: 69e7269dfcf37745b0db6f3baa202939cb4933dd
   FritzVisionPetSegmentationModelAccurate: bbc7e0f51c50c27a6e37b028bd519887a40570ab
   FritzVisionStyleModelPaintings: 119bf7c2f153ca223733a4b6abb215a3cfdbb9d1
   GoogleDataTransport: 8e9b210c97d55fbff306cc5468ff91b9cb32dcf5
@@ -342,6 +349,6 @@ SPEC CHECKSUMS:
   leveldb-library: 55d93ee664b4007aac644a782d11da33fba316f7
   nanopb: 18003b5e52dab79db540fe93fe9579f399bd1ccd
 
-PODFILE CHECKSUM: 520ee8a0dfb4af1b6f90203e222e99b8b7c5f915
+PODFILE CHECKSUM: a8e0b12f28b1769cbd2d757310a8c9ddd61dcfd3
 
 COCOAPODS: 1.8.4

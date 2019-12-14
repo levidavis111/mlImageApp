@@ -29,6 +29,7 @@
 		FCA62B0A23A08BDB00998242 /* HairPredictor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA62B0923A08BDB00998242 /* HairPredictor.swift */; };
 		FCA62B0C23A560A600998242 /* StyleTransferViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA62B0B23A560A600998242 /* StyleTransferViewController.swift */; };
 		FCA62B0E23A56FFC00998242 /* PetStickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA62B0D23A56FFC00998242 /* PetStickerViewController.swift */; };
+		FCA62B1023A5768100998242 /* ObjectDetectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA62B0F23A5768100998242 /* ObjectDetectorViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +73,7 @@
 		FCA62B0923A08BDB00998242 /* HairPredictor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HairPredictor.swift; sourceTree = "<group>"; };
 		FCA62B0B23A560A600998242 /* StyleTransferViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleTransferViewController.swift; sourceTree = "<group>"; };
 		FCA62B0D23A56FFC00998242 /* PetStickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetStickerViewController.swift; sourceTree = "<group>"; };
+		FCA62B0F23A5768100998242 /* ObjectDetectorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectDetectorViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -222,6 +224,7 @@
 				FCA62B0723A083DB00998242 /* HairColorViewController.swift */,
 				FCA62B0B23A560A600998242 /* StyleTransferViewController.swift */,
 				FCA62B0D23A56FFC00998242 /* PetStickerViewController.swift */,
+				FCA62B0F23A5768100998242 /* ObjectDetectorViewController.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -396,6 +399,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FCA62AFD239EEE5B00998242 /* AppUser.swift in Sources */,
+				FCA62B1023A5768100998242 /* ObjectDetectorViewController.swift in Sources */,
 				FCA62B0A23A08BDB00998242 /* HairPredictor.swift in Sources */,
 				FCA62AFA239EECD400998242 /* FirestoreService.swift in Sources */,
 				FCA62B0623A0414B00998242 /* MainMenuViewController.swift in Sources */,

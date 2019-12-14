@@ -14,7 +14,7 @@ class MainMenuViewController: UIViewController {
     
     lazy var aButton: UIButton = {
         let button = UIButton()
-        button.setTitle("A Button", for: .normal)
+        button.setTitle("Hair", for: .normal)
         button.setTitleColor(.black, for: .normal)
         button.backgroundColor = .blue
         button.isSpringLoaded = true
@@ -25,7 +25,7 @@ class MainMenuViewController: UIViewController {
     
     lazy var bButton: UIButton = {
         let button = UIButton()
-        button.setTitle("B Button", for: .normal)
+        button.setTitle("Art", for: .normal)
         button.setTitleColor(.black, for: .normal)
         button.backgroundColor = .blue
         button.isSpringLoaded = true
@@ -36,7 +36,7 @@ class MainMenuViewController: UIViewController {
     
     lazy var cButton: UIButton = {
         let button = UIButton()
-        button.setTitle("C Button", for: .normal)
+        button.setTitle("Pet", for: .normal)
         button.setTitleColor(.black, for: .normal)
         button.backgroundColor = .blue
         button.isSpringLoaded = true
@@ -47,7 +47,7 @@ class MainMenuViewController: UIViewController {
     
     lazy var dButton: UIButton = {
         let button = UIButton()
-        button.setTitle("D Button", for: .normal)
+        button.setTitle("Object ID", for: .normal)
         button.setTitleColor(.black, for: .normal)
         button.backgroundColor = .blue
         button.isSpringLoaded = true
@@ -83,7 +83,8 @@ class MainMenuViewController: UIViewController {
     }
     
     @objc private func dButtonPressed() {
-    print("d")
+        let objectVC = ObjectDetectorViewController()
+        navigationController?.pushViewController(objectVC, animated: true)
     }
     
     @objc private func logout() {
