@@ -61,6 +61,13 @@ class ObjectDetectorViewController: UIViewController {
         self.cameraLayer.frame = self.cameraView.bounds
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        DispatchQueue.main.async { [unowned self] in
+            self.captureSession.stopRunning()
+        }
+    }
+    
     
     private func addSubviews() {
         self.view.addSubview(cameraView)
