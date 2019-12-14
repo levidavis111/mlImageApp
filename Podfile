@@ -16,7 +16,7 @@ pod 'Fritz'
 pod 'ColorSlider'
 pod 'Fritz/VisionSegmentationModel/Hair/Fast'
 pod 'Fritz/Vision'
-pod 'Fritz/VisionSegmentationModel/Hair/Fast'
+pod 'Fritz/VisionStyleModel/Paintings'
 
   target 'ml-image-appTests' do
     inherit! :search_paths

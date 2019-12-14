@@ -218,6 +218,8 @@ PODS:
     - FritzBase/Vision (= 5.0.6)
   - Fritz/VisionSegmentationModel/Hair/Fast (5.0.6):
     - FritzVisionHairSegmentationModelFast (~> 5.0.1)
+  - Fritz/VisionStyleModel/Paintings (5.0.6):
+    - FritzVisionStyleModelPaintings (~> 5.0.1)
   - FritzBase/Core (5.0.6)
   - FritzBase/CoreMLHelpers (5.0.6)
   - FritzBase/ManagedModel (5.0.6):
@@ -227,6 +229,8 @@ PODS:
     - FritzBase/CoreMLHelpers (= 5.0.6)
     - FritzBase/ManagedModel (= 5.0.6)
   - FritzVisionHairSegmentationModelFast (5.0.1):
+    - FritzBase/Vision (~> 5.0.1)
+  - FritzVisionStyleModelPaintings (5.0.1):
     - FritzBase/Vision (~> 5.0.1)
   - GoogleDataTransport (3.2.0)
   - GoogleDataTransportCCTSupport (1.2.2):
@@ -278,6 +282,7 @@ DEPENDENCIES:
   - Fritz
   - Fritz/Vision
   - Fritz/VisionSegmentationModel/Hair/Fast
+  - Fritz/VisionStyleModel/Paintings
 
 SPEC REPOS:
   trunk:
@@ -295,6 +300,7 @@ SPEC REPOS:
     - Fritz
     - FritzBase
     - FritzVisionHairSegmentationModelFast
+    - FritzVisionStyleModelPaintings
     - GoogleDataTransport
     - GoogleDataTransportCCTSupport
     - GoogleUtilities
@@ -319,6 +325,7 @@ SPEC CHECKSUMS:
   Fritz: 02312f8088d1b64c7b539e638d44d6ca835634c4
   FritzBase: 958b20c4abef6abde993e43914ac1571e117de00
   FritzVisionHairSegmentationModelFast: 2b9e40f8e6987ac2d7c903bd84fc07e5a83fc636
+  FritzVisionStyleModelPaintings: 119bf7c2f153ca223733a4b6abb215a3cfdbb9d1
   GoogleDataTransport: 8e9b210c97d55fbff306cc5468ff91b9cb32dcf5
   GoogleDataTransportCCTSupport: ef79a4728b864946a8aafdbab770d5294faf3b5f
   GoogleUtilities: 547a86735c6f0ee30ad17e94df4fc21f616b71cb
@@ -328,6 +335,6 @@ SPEC CHECKSUMS:
   leveldb-library: 55d93ee664b4007aac644a782d11da33fba316f7
   nanopb: 18003b5e52dab79db540fe93fe9579f399bd1ccd
 
-PODFILE CHECKSUM: 45ce4ec051e72e475d2b05781ee6b6f75d642b57
+PODFILE CHECKSUM: f6ff594bd59b3b64e4808198c695c1cfc741eb7d
 
 COCOAPODS: 1.8.4

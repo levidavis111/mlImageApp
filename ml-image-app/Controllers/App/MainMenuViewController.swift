@@ -73,7 +73,8 @@ class MainMenuViewController: UIViewController {
     }
     
     @objc private func bButtonPressed() {
-    print("b")
+        let styleVC = StyleTransferViewController()
+        navigationController?.pushViewController(styleVC, animated: true)
     }
     
     @objc private func cButtonPressed() {
