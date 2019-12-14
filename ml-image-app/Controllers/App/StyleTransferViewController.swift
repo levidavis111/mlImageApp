@@ -9,6 +9,7 @@
 import UIKit
 import Photos
 import Fritz
+import FritzVisionStyleModelPaintings
 
 class StyleTransferViewController: UIViewController {
     

@@ -78,7 +78,8 @@ class MainMenuViewController: UIViewController {
     }
     
     @objc private func cButtonPressed() {
-    print("c")
+        let petVC = PetStickerViewController()
+        navigationController?.pushViewController(petVC, animated: true)
     }
     
     @objc private func dButtonPressed() {

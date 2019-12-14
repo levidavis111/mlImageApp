@@ -218,6 +218,8 @@ PODS:
     - FritzBase/Vision (= 5.0.6)
   - Fritz/VisionSegmentationModel/Hair/Fast (5.0.6):
     - FritzVisionHairSegmentationModelFast (~> 5.0.1)
+  - Fritz/VisionSegmentationModel/Pet/Accurate (5.0.6):
+    - FritzVisionPetSegmentationModelAccurate (~> 5.0.1)
   - Fritz/VisionStyleModel/Paintings (5.0.6):
     - FritzVisionStyleModelPaintings (~> 5.0.1)
   - FritzBase/Core (5.0.6)
@@ -229,6 +231,8 @@ PODS:
     - FritzBase/CoreMLHelpers (= 5.0.6)
     - FritzBase/ManagedModel (= 5.0.6)
   - FritzVisionHairSegmentationModelFast (5.0.1):
+    - FritzBase/Vision (~> 5.0.1)
+  - FritzVisionPetSegmentationModelAccurate (5.0.1):
     - FritzBase/Vision (~> 5.0.1)
   - FritzVisionStyleModelPaintings (5.0.1):
     - FritzBase/Vision (~> 5.0.1)
@@ -282,6 +286,7 @@ DEPENDENCIES:
   - Fritz
   - Fritz/Vision
   - Fritz/VisionSegmentationModel/Hair/Fast
+  - Fritz/VisionSegmentationModel/Pet/Accurate
   - Fritz/VisionStyleModel/Paintings
 
 SPEC REPOS:
@@ -300,6 +305,7 @@ SPEC REPOS:
     - Fritz
     - FritzBase
     - FritzVisionHairSegmentationModelFast
+    - FritzVisionPetSegmentationModelAccurate
     - FritzVisionStyleModelPaintings
     - GoogleDataTransport
     - GoogleDataTransportCCTSupport
@@ -325,6 +331,7 @@ SPEC CHECKSUMS:
   Fritz: 02312f8088d1b64c7b539e638d44d6ca835634c4
   FritzBase: 958b20c4abef6abde993e43914ac1571e117de00
   FritzVisionHairSegmentationModelFast: 2b9e40f8e6987ac2d7c903bd84fc07e5a83fc636
+  FritzVisionPetSegmentationModelAccurate: bbc7e0f51c50c27a6e37b028bd519887a40570ab
   FritzVisionStyleModelPaintings: 119bf7c2f153ca223733a4b6abb215a3cfdbb9d1
   GoogleDataTransport: 8e9b210c97d55fbff306cc5468ff91b9cb32dcf5
   GoogleDataTransportCCTSupport: ef79a4728b864946a8aafdbab770d5294faf3b5f
@@ -335,6 +342,6 @@ SPEC CHECKSUMS:
   leveldb-library: 55d93ee664b4007aac644a782d11da33fba316f7
   nanopb: 18003b5e52dab79db540fe93fe9579f399bd1ccd
 
-PODFILE CHECKSUM: f6ff594bd59b3b64e4808198c695c1cfc741eb7d
+PODFILE CHECKSUM: 520ee8a0dfb4af1b6f90203e222e99b8b7c5f915
 
 COCOAPODS: 1.8.4

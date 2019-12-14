@@ -28,6 +28,7 @@
 		FCA62B0823A083DB00998242 /* HairColorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA62B0723A083DB00998242 /* HairColorViewController.swift */; };
 		FCA62B0A23A08BDB00998242 /* HairPredictor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA62B0923A08BDB00998242 /* HairPredictor.swift */; };
 		FCA62B0C23A560A600998242 /* StyleTransferViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA62B0B23A560A600998242 /* StyleTransferViewController.swift */; };
+		FCA62B0E23A56FFC00998242 /* PetStickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA62B0D23A56FFC00998242 /* PetStickerViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +71,7 @@
 		FCA62B0723A083DB00998242 /* HairColorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HairColorViewController.swift; sourceTree = "<group>"; };
 		FCA62B0923A08BDB00998242 /* HairPredictor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HairPredictor.swift; sourceTree = "<group>"; };
 		FCA62B0B23A560A600998242 /* StyleTransferViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleTransferViewController.swift; sourceTree = "<group>"; };
+		FCA62B0D23A56FFC00998242 /* PetStickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetStickerViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -219,6 +221,7 @@
 				FCA62B0523A0414B00998242 /* MainMenuViewController.swift */,
 				FCA62B0723A083DB00998242 /* HairColorViewController.swift */,
 				FCA62B0B23A560A600998242 /* StyleTransferViewController.swift */,
+				FCA62B0D23A56FFC00998242 /* PetStickerViewController.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -399,6 +402,7 @@
 				FCA62AF6239EE49C00998242 /* FirebaseAuthService.swift in Sources */,
 				FCA62AF1239EDF7100998242 /* CreateAccountViewController.swift in Sources */,
 				FCA62AEF239EDF5900998242 /* LoginViewController.swift in Sources */,
+				FCA62B0E23A56FFC00998242 /* PetStickerViewController.swift in Sources */,
 				FCA62AC9239EDC6700998242 /* AppDelegate.swift in Sources */,
 				FCA62AFF239EF4D000998242 /* Post.swift in Sources */,
 				FCA62B0C23A560A600998242 /* StyleTransferViewController.swift in Sources */,
@@ -561,7 +565,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = VRUAAAF4H3;
 				INFOPLIST_FILE = "ml-image-app/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -581,7 +585,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = VRUAAAF4H3;
 				INFOPLIST_FILE = "ml-image-app/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
