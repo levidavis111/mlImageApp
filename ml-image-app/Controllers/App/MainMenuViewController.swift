@@ -10,15 +10,23 @@ import UIKit
 
 class MainMenuViewController: UIViewController {
     
-//    MARK: - UI Elements
+    //    MARK: - UI Elements
+    
+    lazy var backgroundImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "stars")
+        imageView.isUserInteractionEnabled = true
+        return imageView
+    }()
     
     lazy var aButton: UIButton = {
         let button = UIButton()
         button.setTitle("Hair", for: .normal)
-        button.setTitleColor(.black, for: .normal)
+        button.setTitleColor(.white, for: .normal)
         button.backgroundColor = .blue
         button.isSpringLoaded = true
         button.showsTouchWhenHighlighted = true
+        button.layer.cornerRadius =  10
         button.addTarget(self, action: #selector(aButtonPressed), for: .touchUpInside)
         return button
     }()
@@ -26,10 +34,11 @@ class MainMenuViewController: UIViewController {
     lazy var bButton: UIButton = {
         let button = UIButton()
         button.setTitle("Art", for: .normal)
-        button.setTitleColor(.black, for: .normal)
+        button.setTitleColor(.white, for: .normal)
         button.backgroundColor = .blue
         button.isSpringLoaded = true
         button.showsTouchWhenHighlighted = true
+        button.layer.cornerRadius = 10
         button.addTarget(self, action: #selector(bButtonPressed), for: .touchUpInside)
         return button
     }()
@@ -37,10 +46,11 @@ class MainMenuViewController: UIViewController {
     lazy var cButton: UIButton = {
         let button = UIButton()
         button.setTitle("Pet", for: .normal)
-        button.setTitleColor(.black, for: .normal)
+        button.setTitleColor(.white, for: .normal)
         button.backgroundColor = .blue
         button.isSpringLoaded = true
         button.showsTouchWhenHighlighted = true
+        button.layer.cornerRadius = 10
         button.addTarget(self, action: #selector(cButtonPressed), for: .touchUpInside)
         return button
     }()
@@ -48,24 +58,25 @@ class MainMenuViewController: UIViewController {
     lazy var dButton: UIButton = {
         let button = UIButton()
         button.setTitle("Object ID", for: .normal)
-        button.setTitleColor(.black, for: .normal)
+        button.setTitleColor(.white, for: .normal)
         button.backgroundColor = .blue
         button.isSpringLoaded = true
         button.showsTouchWhenHighlighted = true
+        button.layer.cornerRadius = 10
         button.addTarget(self, action: #selector(dButtonPressed), for: .touchUpInside)
         return button
     }()
     
-//    MARK: - Lifecyle Methods
-
+    //    MARK: - Lifecyle Methods
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        setupStackView()
+        constrainSubviews()
         setupNavBar()
     }
     
-//    MARK: - Obj-C Functions
+    //    MARK: - Obj-C Functions
     
     @objc private func aButtonPressed() {
         let hairColorVC = HairColorViewController()
@@ -94,18 +105,19 @@ class MainMenuViewController: UIViewController {
         window.makeKeyAndVisible()
     }
     
-//    MARK: - Private Functions
+    //    MARK: - Private Functions
     
     private func setupNavBar() {
         let rightButton = UIBarButtonItem(title: "logout", style: .plain, target: self, action: #selector(logout))
+        self.navigationItem.title = "Select an Effect"
         self.navigationItem.rightBarButtonItem = rightButton
     }
     
-//    MARK: - Setup UI
+    //    MARK: - Setup UI
     
     private func constrainSubviews() {
+        setupBackgroundImageView()
         setupStackView()
-
     }
     
     private func setupStackView() {
@@ -113,13 +125,23 @@ class MainMenuViewController: UIViewController {
         stackView.axis = .vertical
         stackView.spacing = 15
         stackView.distribution = .fillEqually
-        view.addSubview(stackView)
+        backgroundImageView.addSubview(stackView)
         
         stackView.translatesAutoresizingMaskIntoConstraints = false
-        [stackView.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
-         stackView.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor),
+        [stackView.centerXAnchor.constraint(equalTo: backgroundImageView.safeAreaLayoutGuide.centerXAnchor),
+         stackView.centerYAnchor.constraint(equalTo: backgroundImageView.safeAreaLayoutGuide.centerYAnchor),
          stackView.heightAnchor.constraint(equalToConstant: 230),
          stackView.widthAnchor.constraint(equalToConstant: 80)].forEach{$0.isActive = true}
     }
-
+    
+    private func setupBackgroundImageView() {
+        view.addSubview(backgroundImageView)
+        backgroundImageView.translatesAutoresizingMaskIntoConstraints = false
+        [backgroundImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+         backgroundImageView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+         backgroundImageView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+         backgroundImageView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor)].forEach{$0.isActive = true}
+        
+    }
+    
 }
