@@ -6,3 +6,4 @@ MLImagePlay uses artificial intelligence and machine learning technology to enab
 CoreML
 AVFoundation
 Vision
+Firebase
