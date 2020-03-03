@@ -19,7 +19,7 @@ class MainMenuViewController: UIViewController {
         return imageView
     }()
     
-    lazy var aButton: UIButton = {
+    lazy var hairButton: UIButton = {
         let button = UIButton()
         button.setTitle("Hair", for: .normal)
         button.setTitleColor(.white, for: .normal)
@@ -27,11 +27,11 @@ class MainMenuViewController: UIViewController {
         button.isSpringLoaded = true
         button.showsTouchWhenHighlighted = true
         button.layer.cornerRadius =  10
-        button.addTarget(self, action: #selector(aButtonPressed), for: .touchUpInside)
+        button.addTarget(self, action: #selector(hairButtonPressed), for: .touchUpInside)
         return button
     }()
     
-    lazy var bButton: UIButton = {
+    lazy var artFilterButton: UIButton = {
         let button = UIButton()
         button.setTitle("Art", for: .normal)
         button.setTitleColor(.white, for: .normal)
@@ -39,11 +39,11 @@ class MainMenuViewController: UIViewController {
         button.isSpringLoaded = true
         button.showsTouchWhenHighlighted = true
         button.layer.cornerRadius = 10
-        button.addTarget(self, action: #selector(bButtonPressed), for: .touchUpInside)
+        button.addTarget(self, action: #selector(artFilterButtonPressed), for: .touchUpInside)
         return button
     }()
     
-    lazy var cButton: UIButton = {
+    lazy var petButton: UIButton = {
         let button = UIButton()
         button.setTitle("Pet", for: .normal)
         button.setTitleColor(.white, for: .normal)
@@ -51,11 +51,11 @@ class MainMenuViewController: UIViewController {
         button.isSpringLoaded = true
         button.showsTouchWhenHighlighted = true
         button.layer.cornerRadius = 10
-        button.addTarget(self, action: #selector(cButtonPressed), for: .touchUpInside)
+        button.addTarget(self, action: #selector(petButtonPressed), for: .touchUpInside)
         return button
     }()
     
-    lazy var dButton: UIButton = {
+    lazy var objectDetectButton: UIButton = {
         let button = UIButton()
         button.setTitle("Object ID", for: .normal)
         button.setTitleColor(.white, for: .normal)
@@ -63,7 +63,7 @@ class MainMenuViewController: UIViewController {
         button.isSpringLoaded = true
         button.showsTouchWhenHighlighted = true
         button.layer.cornerRadius = 10
-        button.addTarget(self, action: #selector(dButtonPressed), for: .touchUpInside)
+        button.addTarget(self, action: #selector(objectDetectButtonPressed), for: .touchUpInside)
         return button
     }()
     
@@ -78,22 +78,22 @@ class MainMenuViewController: UIViewController {
     
     //    MARK: - Obj-C Functions
     
-    @objc private func aButtonPressed() {
+    @objc private func hairButtonPressed() {
         let hairColorVC = HairColorViewController()
         navigationController?.pushViewController(hairColorVC, animated: true)
     }
     
-    @objc private func bButtonPressed() {
+    @objc private func artFilterButtonPressed() {
         let styleVC = StyleTransferViewController()
         navigationController?.pushViewController(styleVC, animated: true)
     }
     
-    @objc private func cButtonPressed() {
+    @objc private func petButtonPressed() {
         let petVC = PetStickerViewController()
         navigationController?.pushViewController(petVC, animated: true)
     }
     
-    @objc private func dButtonPressed() {
+    @objc private func objectDetectButtonPressed() {
         let objectVC = ObjectDetectorViewController()
         navigationController?.pushViewController(objectVC, animated: true)
     }
@@ -121,7 +121,7 @@ class MainMenuViewController: UIViewController {
     }
     
     private func setupStackView() {
-        let stackView = UIStackView(arrangedSubviews: [aButton, bButton, cButton, dButton])
+        let stackView = UIStackView(arrangedSubviews: [hairButton, artFilterButton, petButton, objectDetectButton])
         stackView.axis = .vertical
         stackView.spacing = 15
         stackView.distribution = .fillEqually

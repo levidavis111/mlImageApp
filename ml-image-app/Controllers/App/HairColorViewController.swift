@@ -12,6 +12,7 @@ import Fritz
 import ColorSlider
 
 class HairColorViewController: UIViewController, HairPredictor {
+    
     lazy var visionModel = FritzVisionHairSegmentationModelFast()
     var colorSlider = ColorSlider(orientation: .vertical, previewSide: .left)
     
@@ -22,14 +23,14 @@ class HairColorViewController: UIViewController, HairPredictor {
         return cameraView
     }()
     
-    private lazy var cameraSession = AVCaptureSession()
+    private lazy var captureSession = AVCaptureSession()
     private let sessionQueue = DispatchQueue(label: "com.fritzdemo.imagesegmentation.session")
     private let captureQueue = DispatchQueue(label: "com.fritzdemo.imagesegmentation.capture",
                                              qos: DispatchQoS.userInitiated)
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.addSubview(cameraView)
+        addSubviews()
         addColorSlider()
         setupCamera()
         
@@ -39,13 +40,20 @@ class HairColorViewController: UIViewController, HairPredictor {
         super.viewDidAppear(animated)
         
         sessionQueue.async {
-            self.cameraSession.startRunning()
+            self.captureSession.startRunning()
         }
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        captureSession.stopRunning()
+    }
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         view.bringSubviewToFront(colorSlider)
+    }
+    
+    private func addSubviews() {
+        view.addSubview(cameraView)
     }
     
     private func setupCamera() {
@@ -62,11 +70,11 @@ class HairColorViewController: UIViewController, HairPredictor {
         output.setSampleBufferDelegate(self, queue: captureQueue)
         
         sessionQueue.async {
-            self.cameraSession.beginConfiguration()
-            self.cameraSession.addInput(input)
-            self.cameraSession.addOutput(output)
-            self.cameraSession.commitConfiguration()
-            self.cameraSession.sessionPreset = .photo
+            self.captureSession.beginConfiguration()
+            self.captureSession.addInput(input)
+            self.captureSession.addOutput(output)
+            self.captureSession.commitConfiguration()
+            self.captureSession.sessionPreset = .photo
             
             // Front camera images are mirrored.
             output.connection(with: .video)?.isVideoMirrored = true

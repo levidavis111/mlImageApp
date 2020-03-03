@@ -7,7 +7,8 @@
 //
 
 import UIKit
-import Photos
+//import photos to select on an image
+//import Photos
 import Fritz
 import FritzVisionStyleModelPaintings
 
@@ -55,7 +56,15 @@ class StyleTransferViewController: UIViewController {
         addSubviews()
         setupCaptureSession()
         setConstraints()
-        self.view.addGestureRecognizer(tapGestureRecognizer)
+        addTapGesture()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        captureSession.startRunning()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        captureSession.stopRunning()
     }
     
     override func viewWillLayoutSubviews() {
@@ -91,6 +100,10 @@ class StyleTransferViewController: UIViewController {
          tapLabel.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor)].forEach{$0.isActive = true}
     }
     
+    private func addTapGesture() {
+        self.view.addGestureRecognizer(tapGestureRecognizer)
+    }
+    
     private func setupCaptureSession() {
         guard
             let backCamera = AVCaptureDevice.default(
@@ -109,7 +122,7 @@ class StyleTransferViewController: UIViewController {
         videoOutput.videoSettings = [kCVPixelBufferPixelFormatTypeKey as String: kCVPixelFormatType_32BGRA as UInt32]
         videoOutput.setSampleBufferDelegate(self, queue: DispatchQueue(label: "MyQueue"))
         self.captureSession.addOutput(videoOutput)
-        self.captureSession.startRunning()
+
     }
     
     

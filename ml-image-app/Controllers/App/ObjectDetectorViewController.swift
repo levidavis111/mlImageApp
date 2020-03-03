@@ -17,10 +17,6 @@ import FritzVisionObjectModelFast
 class ObjectDetectorViewController: UIViewController {
     
     lazy var visionModel = FritzVisionObjectModelFast()
-    var lastExecution = Date()
-    lazy var screenHeight = Double(view.frame.height)
-    lazy var screenWidth = Double(view.frame.width)
-    
     
     lazy var cameraView: UIView = {
         let cameraView = UIView()

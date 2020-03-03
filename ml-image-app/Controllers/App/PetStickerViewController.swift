@@ -12,15 +12,8 @@ import Fritz
 import FritzVisionPetSegmentationModelAccurate
 
 class PetStickerViewController: UIViewController {
-    
-    /// Scores output from model greater than this value will be set as 1.
-     /// Lowering this value will make the mask more intense for lower confidence values.
-     var clippingScoresAbove: Double { return 0.6 }
-     
-     /// Values lower than this value will not appear in the mask.
-     var zeroingScoresBelow: Double { return 0.4 }
 
-     private lazy var visionModel = FritzVisionPetSegmentationModelAccurate()
+    private lazy var visionModel = FritzVisionPetSegmentationModelAccurate()
     
     
     lazy var imageView: UIImageView = {
@@ -41,19 +34,12 @@ class PetStickerViewController: UIViewController {
         imageView.backgroundColor = .white
         return imageView
     }()
-    
-    let context = CIContext()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         addsubViews()
         openPhotoLibrary()
 
-        // Do any additional setup after loading the view.
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
     }
     
     private func openPhotoLibrary() {
@@ -67,6 +53,14 @@ class PetStickerViewController: UIViewController {
     }
     
     private func createSticker(_ uiImage: UIImage) {
+        
+        /// Scores output from model greater than this value will be set as 1.
+        /// Lowering this value will make the mask more intense for lower confidence values.
+        var clippingScoresAbove: Double { return 0.6 }
+        
+        /// Values lower than this value will not appear in the mask.
+        var zeroingScoresBelow: Double { return 0.4 }
+        
         let fritzImage = FritzVisionImage(image: uiImage)
         guard let result = try? visionModel.predict(fritzImage), let mask = result.buildSingleClassMask(forClass: FritzVisionPetClass.pet, clippingScoresAbove: clippingScoresAbove, zeroingScoresBelow: zeroingScoresBelow) else {return}
         
@@ -92,7 +86,5 @@ UINavigationControllerDelegate {
         self.dismiss(animated: true) {
             self.createSticker(image)
         }
-        
-//        self.imageView.image = image
     }
 }
