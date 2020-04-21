@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 //import photos to select on an image
 //import Photos
 import Fritz

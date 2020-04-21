@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import AVFoundation
+//import AVFoundation
 import Fritz
 import FritzVisionPetSegmentationModelAccurate
 
