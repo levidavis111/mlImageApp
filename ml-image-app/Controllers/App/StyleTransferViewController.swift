@@ -14,34 +14,34 @@ import FritzVisionStyleModelPaintings
 
 class StyleTransferViewController: UIViewController {
     
-    var counter = 0
-    lazy var selectedStyle = PaintingStyleModel.Style.starryNight.build()
-    lazy var styleModel = PaintingStyleModel.Style.starryNight.build()
+    private var counter = 0
+    private lazy var selectedStyle = PaintingStyleModel.Style.starryNight.build()
+    private lazy var styleModel = PaintingStyleModel.Style.starryNight.build()
     
-    lazy var styleModel1 = PaintingStyleModel.Style.bicentennialPrint.build()
-    lazy var styleModel2 = PaintingStyleModel.Style.femmes.build()
-    lazy var styleModel3 = PaintingStyleModel.Style.poppyField.build()
-    lazy var styleModel4 = PaintingStyleModel.Style.ritmoPlastico.build()
+    private lazy var styleModel1 = PaintingStyleModel.Style.bicentennialPrint.build()
+    private lazy var styleModel2 = PaintingStyleModel.Style.femmes.build()
+    private lazy var styleModel3 = PaintingStyleModel.Style.poppyField.build()
+    private lazy var styleModel4 = PaintingStyleModel.Style.ritmoPlastico.build()
     
-    lazy var styleChoices = [styleModel, styleModel1, styleModel2, styleModel4, styleModel4]
+    private lazy var styleChoices = [styleModel, styleModel1, styleModel2, styleModel4, styleModel4]
     
     private lazy var captureSession: AVCaptureSession = {
         let session = AVCaptureSession()
         return session
     }()
     
-    lazy var tapGestureRecognizer: UITapGestureRecognizer = {
+    private lazy var tapGestureRecognizer: UITapGestureRecognizer = {
         let tap = UITapGestureRecognizer(target: self, action: #selector(screenTapped))
         return tap
     }()
     
-    lazy var previewView: UIImageView = {
+    private lazy var previewView: UIImageView = {
         let imageView = UIImageView(frame: view.bounds)
         imageView.contentMode = .scaleAspectFill
         return imageView
     }()
     
-    lazy var tapLabel: UILabel = {
+    private lazy var tapLabel: UILabel = {
         let label = UILabel()
         label.textColor = .white
         label.textAlignment = .center
@@ -60,7 +60,9 @@ class StyleTransferViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        captureSession.startRunning()
+        DispatchQueue.main.async {[weak self] in
+            self?.captureSession.startRunning()
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -69,7 +71,6 @@ class StyleTransferViewController: UIViewController {
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-        
         previewView.frame = view.bounds
     }
     
@@ -101,7 +102,7 @@ class StyleTransferViewController: UIViewController {
     }
     
     private func addTapGesture() {
-        self.view.addGestureRecognizer(tapGestureRecognizer)
+        view.addGestureRecognizer(tapGestureRecognizer)
     }
     
     private func setupCaptureSession() {
@@ -121,7 +122,7 @@ class StyleTransferViewController: UIViewController {
         
         videoOutput.videoSettings = [kCVPixelBufferPixelFormatTypeKey as String: kCVPixelFormatType_32BGRA as UInt32]
         videoOutput.setSampleBufferDelegate(self, queue: DispatchQueue(label: "MyQueue"))
-        self.captureSession.addOutput(videoOutput)
+        captureSession.addOutput(videoOutput)
 
     }
     
@@ -135,8 +136,8 @@ extension StyleTransferViewController: AVCaptureVideoDataOutputSampleBufferDeleg
         let fritzImage = FritzVisionImage(sampleBuffer: sampleBuffer, connection: connection)
         guard let stylizedImage = try? selectedStyle.predict(fritzImage) else { return }
         let styled = UIImage(pixelBuffer: stylizedImage)
-        DispatchQueue.main.async {
-            self.previewView.image = styled
+        DispatchQueue.main.async {[weak self] in
+            self?.previewView.image = styled
         }
         
     }
