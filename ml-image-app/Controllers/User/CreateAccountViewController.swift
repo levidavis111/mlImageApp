@@ -29,6 +29,7 @@ class CreateAccountViewController: UIViewController {
         textField.placeholder = "Enter Email"
         textField.font = UIFont(name: "Verdana", size: 14)
         textField.backgroundColor = .white
+        textField.textColor = .black
         textField.borderStyle = .bezel
         textField.autocorrectionType = .no
         textField.addTarget(self, action: #selector(validateFields), for: .editingChanged)
@@ -40,6 +41,7 @@ class CreateAccountViewController: UIViewController {
         textField.placeholder = "Enter Password"
         textField.font = UIFont(name: "Verdana", size: 14)
         textField.backgroundColor = .white
+        textField.textColor = .black
         textField.borderStyle = .bezel
         textField.autocorrectionType = .no
         textField.isSecureTextEntry = true
