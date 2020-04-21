@@ -16,7 +16,7 @@ class HairColorViewController: UIViewController, HairPredictor {
     lazy var visionModel = FritzVisionHairSegmentationModelFast()
     var colorSlider = ColorSlider(orientation: .vertical, previewSide: .left)
     
-    lazy var cameraView: UIImageView = {
+    private lazy var cameraView: UIImageView = {
         let cameraView = UIImageView(frame: view.bounds)
         cameraView.contentMode = .scaleAspectFill
         
@@ -39,8 +39,8 @@ class HairColorViewController: UIViewController, HairPredictor {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        sessionQueue.async {
-            self.captureSession.startRunning()
+        sessionQueue.async {[weak self] in
+            self?.captureSession.startRunning()
         }
     }
     
@@ -69,12 +69,12 @@ class HairColorViewController: UIViewController, HairPredictor {
         output.alwaysDiscardsLateVideoFrames = true
         output.setSampleBufferDelegate(self, queue: captureQueue)
         
-        sessionQueue.async {
-            self.captureSession.beginConfiguration()
-            self.captureSession.addInput(input)
-            self.captureSession.addOutput(output)
-            self.captureSession.commitConfiguration()
-            self.captureSession.sessionPreset = .photo
+        sessionQueue.async {[weak self] in
+            self?.captureSession.beginConfiguration()
+            self?.captureSession.addInput(input)
+            self?.captureSession.addOutput(output)
+            self?.captureSession.commitConfiguration()
+            self?.captureSession.sessionPreset = .photo
             
             // Front camera images are mirrored.
             output.connection(with: .video)?.isVideoMirrored = true
@@ -86,21 +86,21 @@ extension HairColorViewController: AVCaptureVideoDataOutputSampleBufferDelegate 
     
     /// Scores output from model greater than this value will be set as 1.
     /// Lowering this value will make the mask more intense for lower confidence values.
-    var clippingScoresAbove: Double { return 0.7 }
+    private var clippingScoresAbove: Double { return 0.7 }
     
     /// Values lower than this value will not appear in the mask.
-    var zeroingScoresBelow: Double { return 0.3 }
+    private var zeroingScoresBelow: Double { return 0.3 }
     
     /// Controls the opacity the mask is applied to the base image.
-    var opacity: CGFloat { return 0.7 }
+    private var opacity: CGFloat { return 0.7 }
     
     /// The method used to blend the hair mask with the underlying image.
     /// Soft light produces the best results in our tests, but check out
     /// .hue and .color for different effects.
-    var blendKernel: CIBlendKernel { return .softLight }
+    private var blendKernel: CIBlendKernel { return .softLight }
     
     /// Color of the mask.
-    var maskColor: UIColor { return colorSlider.color }
+    private var maskColor: UIColor { return colorSlider.color }
     
     func captureOutput(
         _ output: AVCaptureOutput,
@@ -124,8 +124,8 @@ extension HairColorViewController: AVCaptureVideoDataOutputSampleBufferDelegate 
             opacity: opacity
         )
         
-        DispatchQueue.main.async {
-            self.cameraView.image = blended
+        DispatchQueue.main.async {[weak self] in
+            self?.cameraView.image = blended
         }
     }
 }
