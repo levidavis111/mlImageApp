@@ -12,7 +12,7 @@ class LoginViewController: UIViewController {
     
     //MARK: - UI Elements
     
-    lazy var scrollView: UIScrollView = {
+    private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.isScrollEnabled = false
         scrollView.backgroundColor = .white
@@ -20,7 +20,7 @@ class LoginViewController: UIViewController {
     }()
     
     
-    lazy var logoLabel: UILabel = {
+    private lazy var logoLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
         label.text = "ML Image App"
@@ -31,7 +31,7 @@ class LoginViewController: UIViewController {
         return label
     }()
     
-    lazy var emailTextField: UITextField = {
+    private lazy var emailTextField: UITextField = {
         let textField = UITextField()
         textField.placeholder = "Enter Email"
         textField.font = UIFont(name: "Verdana", size: 14)
@@ -43,7 +43,7 @@ class LoginViewController: UIViewController {
         return textField
     }()
     
-    lazy var passwordTextField: UITextField = {
+    private lazy var passwordTextField: UITextField = {
         let textField = UITextField()
         textField.placeholder = "Enter Password"
         textField.font = UIFont(name: "Verdana", size: 14)
@@ -56,7 +56,7 @@ class LoginViewController: UIViewController {
         return textField
     }()
     
-    lazy var loginButton: UIButton = {
+    private lazy var loginButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Login", for: .normal)
         button.setTitleColor(.white, for: .normal)
@@ -68,7 +68,7 @@ class LoginViewController: UIViewController {
         return button
     }()
     
-    lazy var createAccountButton: UIButton = {
+    private lazy var createAccountButton: UIButton = {
         let button = UIButton(type: .system)
         let attributedTitle = NSMutableAttributedString(string: "Don't have an account?  ",
                                                         attributes: [
