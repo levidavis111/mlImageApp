@@ -67,6 +67,12 @@ class MainMenuViewController: UIViewController {
         return button
     }()
     
+    private lazy var activityIndicator: UIActivityIndicatorView = {
+        let spinner = UIActivityIndicatorView(style: .large)
+        spinner.hidesWhenStopped = true
+        return spinner
+    }()
+    
     //    MARK: - Lifecyle Methods
     
     override func viewDidLoad() {
@@ -79,30 +85,40 @@ class MainMenuViewController: UIViewController {
     //    MARK: - Obj-C Functions
     
     @objc private func hairButtonPressed() {
+        activityIndicator.startAnimating()
         let hairColorVC = HairColorViewController()
         navigationController?.pushViewController(hairColorVC, animated: true)
+        activityIndicator.stopAnimating()
     }
     
     @objc private func artFilterButtonPressed() {
+        activityIndicator.startAnimating()
         let styleVC = StyleTransferViewController()
         navigationController?.pushViewController(styleVC, animated: true)
+        activityIndicator.stopAnimating()
     }
     
     @objc private func petButtonPressed() {
+        activityIndicator.startAnimating()
         let petVC = PetStickerViewController()
         navigationController?.pushViewController(petVC, animated: true)
+        activityIndicator.stopAnimating()
     }
     
     @objc private func objectDetectButtonPressed() {
+        activityIndicator.startAnimating()
         let objectVC = ObjectDetectorViewController()
         navigationController?.pushViewController(objectVC, animated: true)
+        activityIndicator.stopAnimating()
     }
     
     @objc private func logout() {
+        activityIndicator.startAnimating()
         FirebaseAuthService.manager.logoutUser()
         guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene, let sceneDelegate = windowScene.delegate as? SceneDelegate, let window = sceneDelegate.window else {return}
         window.rootViewController = LoginViewController()
         window.makeKeyAndVisible()
+        activityIndicator.stopAnimating()
     }
     
     //    MARK: - Private Functions
@@ -118,6 +134,7 @@ class MainMenuViewController: UIViewController {
     private func constrainSubviews() {
         setupBackgroundImageView()
         setupStackView()
+        setupActivityIndicator()
     }
     
     private func setupStackView() {
@@ -141,6 +158,14 @@ class MainMenuViewController: UIViewController {
          backgroundImageView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
          backgroundImageView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
          backgroundImageView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor)].forEach{$0.isActive = true}
+        
+    }
+    
+    private func setupActivityIndicator() {
+        view.addSubview(activityIndicator)
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        [activityIndicator.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
+         activityIndicator.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor)].forEach {$0.isActive = true}
         
     }
     

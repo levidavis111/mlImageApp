@@ -51,6 +51,12 @@ class StyleTransferViewController: UIViewController {
         return label
     }()
     
+    private lazy var activityIndicator: UIActivityIndicatorView = {
+        let spinner = UIActivityIndicatorView(style: .large)
+        spinner.hidesWhenStopped = true
+        return spinner
+    }()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,7 +73,16 @@ class StyleTransferViewController: UIViewController {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        captureSession.stopRunning()
+        super.viewWillDisappear(animated)
+        DispatchQueue.main.async {[weak self] in
+            self?.captureSession.stopRunning()
+            self?.activityIndicator.startAnimating()
+        }
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        activityIndicator.stopAnimating()
     }
     
     override func viewWillLayoutSubviews() {
@@ -94,12 +109,21 @@ class StyleTransferViewController: UIViewController {
     
     private func setConstraints() {
         constrainTapLabel()
+        setupActivityIndicator()
     }
     
     private func constrainTapLabel() {
         tapLabel.translatesAutoresizingMaskIntoConstraints = false
         [tapLabel.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
          tapLabel.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor)].forEach{$0.isActive = true}
+    }
+    
+    private func setupActivityIndicator() {
+        previewView.addSubview(activityIndicator)
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        [activityIndicator.centerXAnchor.constraint(equalTo: previewView.safeAreaLayoutGuide.centerXAnchor),
+         activityIndicator.centerYAnchor.constraint(equalTo: previewView.safeAreaLayoutGuide.centerYAnchor)].forEach {$0.isActive = true}
+        
     }
     
     private func addTapGesture() {

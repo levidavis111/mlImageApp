@@ -34,11 +34,29 @@ class PetStickerViewController: UIViewController {
         return imageView
     }()
 
+    private lazy var activityIndicator: UIActivityIndicatorView = {
+        let spinner = UIActivityIndicatorView(style: .large)
+        spinner.hidesWhenStopped = true
+        return spinner
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         addsubViews()
         openPhotoLibrary()
 
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        DispatchQueue.main.async {[weak self] in
+            self?.activityIndicator.startAnimating()
+        }
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        activityIndicator.stopAnimating()
     }
     
     private func openPhotoLibrary() {
@@ -73,6 +91,14 @@ class PetStickerViewController: UIViewController {
     private func addsubViews() {
         view.addSubview(backGroundView)
         view.addSubview(imageView)
+        setupActivityIndicator()
+    }
+    
+    private func setupActivityIndicator() {
+        imageView.addSubview(activityIndicator)
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        [activityIndicator.centerXAnchor.constraint(equalTo: imageView.safeAreaLayoutGuide.centerXAnchor),
+         activityIndicator.centerYAnchor.constraint(equalTo: imageView.safeAreaLayoutGuide.centerYAnchor)].forEach {$0.isActive = true}
     }
     
 }

@@ -23,6 +23,12 @@ class HairColorViewController: UIViewController, HairPredictor {
         return cameraView
     }()
     
+    private lazy var activityIndicator: UIActivityIndicatorView = {
+        let spinner = UIActivityIndicatorView(style: .large)
+        spinner.hidesWhenStopped = true
+        return spinner
+    }()
+    
     private lazy var captureSession = AVCaptureSession()
     private let sessionQueue = DispatchQueue(label: "com.fritzdemo.imagesegmentation.session")
     private let captureQueue = DispatchQueue(label: "com.fritzdemo.imagesegmentation.capture",
@@ -45,7 +51,17 @@ class HairColorViewController: UIViewController, HairPredictor {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        captureSession.stopRunning()
+        super.viewWillDisappear(animated)
+        DispatchQueue.main.async {[weak self] in
+            self?.activityIndicator.startAnimating()
+            self?.captureSession.stopRunning()
+        }
+        
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        activityIndicator.stopAnimating()
     }
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
@@ -54,6 +70,15 @@ class HairColorViewController: UIViewController, HairPredictor {
     
     private func addSubviews() {
         view.addSubview(cameraView)
+        setupActivityIndicator()
+    }
+    
+    private func setupActivityIndicator() {
+        cameraView.addSubview(activityIndicator)
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        [activityIndicator.centerXAnchor.constraint(equalTo: cameraView.safeAreaLayoutGuide.centerXAnchor),
+         activityIndicator.centerYAnchor.constraint(equalTo: cameraView.safeAreaLayoutGuide.centerYAnchor)].forEach {$0.isActive = true}
+        
     }
     
     private func setupCamera() {

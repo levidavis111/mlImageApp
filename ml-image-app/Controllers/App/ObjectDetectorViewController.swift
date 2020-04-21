@@ -37,6 +37,12 @@ class ObjectDetectorViewController: UIViewController {
         return layer
     }()
     
+    private lazy var activityIndicator: UIActivityIndicatorView = {
+        let spinner = UIActivityIndicatorView(style: .large)
+        spinner.hidesWhenStopped = true
+        return spinner
+    }()
+    
     let numBoxes = 100
     var boundingBoxes = [BoundingBoxOutline]()
 //    let multiClass = true
@@ -60,8 +66,14 @@ class ObjectDetectorViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         DispatchQueue.main.async { [weak self] in
+            self?.activityIndicator.startAnimating()
             self?.captureSession.stopRunning()
         }
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        activityIndicator.stopAnimating()
     }
     
     
@@ -73,6 +85,7 @@ class ObjectDetectorViewController: UIViewController {
     
     private func constrainSubviews() {
         constrainCameraView()
+        setupActivityIndicator()
     }
     
     private func constrainCameraView() {
@@ -81,6 +94,14 @@ class ObjectDetectorViewController: UIViewController {
          cameraView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
          cameraView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
          cameraView.trailingAnchor.constraint(equalTo: view.trailingAnchor)].forEach{$0.isActive = true}
+    }
+    
+    private func setupActivityIndicator() {
+        cameraView.addSubview(activityIndicator)
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        [activityIndicator.centerXAnchor.constraint(equalTo: cameraView.safeAreaLayoutGuide.centerXAnchor),
+         activityIndicator.centerYAnchor.constraint(equalTo: cameraView.safeAreaLayoutGuide.centerYAnchor)].forEach {$0.isActive = true}
+        
     }
     
     private func configureCaptureSession() {
