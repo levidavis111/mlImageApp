@@ -12,14 +12,14 @@ class MainMenuViewController: UIViewController {
     
     //    MARK: - UI Elements
     
-    lazy var backgroundImageView: UIImageView = {
+    private lazy var backgroundImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "stars")
         imageView.isUserInteractionEnabled = true
         return imageView
     }()
     
-    lazy var hairButton: UIButton = {
+    private lazy var hairButton: UIButton = {
         let button = UIButton()
         button.setTitle("Hair", for: .normal)
         button.setTitleColor(.white, for: .normal)
@@ -31,7 +31,7 @@ class MainMenuViewController: UIViewController {
         return button
     }()
     
-    lazy var artFilterButton: UIButton = {
+    private lazy var artFilterButton: UIButton = {
         let button = UIButton()
         button.setTitle("Art", for: .normal)
         button.setTitleColor(.white, for: .normal)
@@ -43,7 +43,7 @@ class MainMenuViewController: UIViewController {
         return button
     }()
     
-    lazy var petButton: UIButton = {
+    private lazy var petButton: UIButton = {
         let button = UIButton()
         button.setTitle("Pet", for: .normal)
         button.setTitleColor(.white, for: .normal)
@@ -55,7 +55,7 @@ class MainMenuViewController: UIViewController {
         return button
     }()
     
-    lazy var objectDetectButton: UIButton = {
+    private lazy var objectDetectButton: UIButton = {
         let button = UIButton()
         button.setTitle("Object ID", for: .normal)
         button.setTitleColor(.white, for: .normal)
