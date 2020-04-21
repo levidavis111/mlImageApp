@@ -16,22 +16,22 @@ import FritzVisionObjectModelFast
 
 class ObjectDetectorViewController: UIViewController {
     
-    lazy var visionModel = FritzVisionObjectModelFast()
+    private lazy var visionModel = FritzVisionObjectModelFast()
     
-    lazy var cameraView: UIView = {
+    private lazy var cameraView: UIView = {
         let cameraView = UIView()
         
         return cameraView
     }()
     
-    lazy var captureSession: AVCaptureSession = {
+    private lazy var captureSession: AVCaptureSession = {
         let session = AVCaptureSession()
         guard let backCamera = AVCaptureDevice.default(.builtInWideAngleCamera, for: .video, position: .back), let input = try? AVCaptureDeviceInput(device: backCamera) else {return session}
         session.addInput(input)
         return session
     }()
     
-    lazy var cameraLayer: AVCaptureVideoPreviewLayer = {
+    private lazy var cameraLayer: AVCaptureVideoPreviewLayer = {
         let layer = AVCaptureVideoPreviewLayer(session: self.captureSession)
         layer.videoGravity = .resizeAspectFill
         return layer
@@ -39,7 +39,7 @@ class ObjectDetectorViewController: UIViewController {
     
     let numBoxes = 100
     var boundingBoxes = [BoundingBoxOutline]()
-    let multiClass = true
+//    let multiClass = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,24 +50,24 @@ class ObjectDetectorViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        self.cameraLayer.frame = cameraView.layer.bounds
+        cameraLayer.frame = cameraView.layer.bounds
     }
     
     override func viewDidLayoutSubviews() {
-        self.cameraLayer.frame = self.cameraView.bounds
+        cameraLayer.frame = cameraView.bounds
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        DispatchQueue.main.async { [unowned self] in
-            self.captureSession.stopRunning()
+        DispatchQueue.main.async { [weak self] in
+            self?.captureSession.stopRunning()
         }
     }
     
     
     private func addSubviews() {
-        self.view.addSubview(cameraView)
-        self.cameraView.layer.addSublayer(cameraLayer)
+        view.addSubview(cameraView)
+        cameraView.layer.addSublayer(cameraLayer)
     }
     
     
@@ -85,16 +85,18 @@ class ObjectDetectorViewController: UIViewController {
     
     private func configureCaptureSession() {
         let videoOutput = AVCaptureVideoDataOutput()
-        self.captureSession.addOutput(videoOutput)
+        captureSession.addOutput(videoOutput)
         videoOutput.setSampleBufferDelegate(self, queue: DispatchQueue(label: "videoQueue"))
-        self.captureSession.startRunning()
+        DispatchQueue.main.async {[weak self] in
+            self?.captureSession.startRunning()
+        }
     }
     
     private func setupBoxes() {
         for _ in 0..<numBoxes {
             let box = BoundingBoxOutline()
             box.addToLayer(cameraView.layer)
-            self.boundingBoxes.append(box)
+            boundingBoxes.append(box)
         }
     }
     
@@ -109,15 +111,14 @@ class ObjectDetectorViewController: UIViewController {
             
             let box = prediction.boundingBox
             let rect = box.toCGRect(imgHeight: width, imgWidth: width, xOffset: 0.0, yOffset: yOffset)
-            self.boundingBoxes[index].show(frame: rect, label: textLabel, color: .red, textColor: .black)
+            boundingBoxes[index].show(frame: rect, label: textLabel, color: .red, textColor: .black)
         }
         
         for index in predictions.count..<self.numBoxes {
-            self.boundingBoxes[index].hide()
+            boundingBoxes[index].hide()
         }
         
     }
-    
     
 }
 
@@ -143,8 +144,8 @@ extension ObjectDetectorViewController: AVCaptureVideoDataOutputSampleBufferDele
         visionModel.predict(image, options: options) { objects, error in
             if let objects = objects, objects.count > 0 {
                 
-                DispatchQueue.main.async {
-                    self.drawBoxes(predictions: objects)
+                DispatchQueue.main.async {[weak self] in
+                    self?.drawBoxes(predictions: objects)
                 }
             }
         }

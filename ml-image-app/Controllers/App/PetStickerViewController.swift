@@ -7,7 +7,6 @@
 //
 
 import UIKit
-//import AVFoundation
 import Fritz
 import FritzVisionPetSegmentationModelAccurate
 
@@ -16,19 +15,19 @@ class PetStickerViewController: UIViewController {
     private lazy var visionModel = FritzVisionPetSegmentationModelAccurate()
     
     
-    lazy var imageView: UIImageView = {
+    private lazy var imageView: UIImageView = {
         let imageView = UIImageView(frame: view.bounds)
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
     
-    lazy var maskView: UIImageView = {
+    private lazy var maskView: UIImageView = {
         let imageView = UIImageView(frame: view.bounds)
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
     
-    lazy var backGroundView: UIImageView = {
+    private lazy var backGroundView: UIImageView = {
         let imageView = UIImageView(frame: view.bounds)
         imageView.contentMode = .scaleAspectFill
         imageView.backgroundColor = .white
