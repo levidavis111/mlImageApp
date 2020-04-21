@@ -88,6 +88,7 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         addSubviews()
         constrainSubviews()
+        dismissKeyboardWithTap()
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardSelectorTriggered(sender:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         
     }
@@ -124,8 +125,11 @@ class LoginViewController: UIViewController {
     }
     
     @objc private func keyboardSelectorTriggered(sender: Notification) {
-//        print(sender.userInfo)
         moveViewsToAccomadateKeyboard(with: CGRect(x: 0, y: 0, width: 414, height: 346), and: 0.25)
+    }
+    
+    @objc private func dismissKeyboard() {
+        scrollView.endEditing(true)
     }
     
 //    MARK: - Private Functions
@@ -134,6 +138,7 @@ class LoginViewController: UIViewController {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let okayAction = UIAlertAction(title: "Okay", style: .default, handler: nil)
         alertController.addAction(okayAction)
+        present(alertController, animated: true, completion: nil)
     }
     
     private func handleLoginResponse(with result: Result <(), Error>) {
@@ -142,8 +147,6 @@ class LoginViewController: UIViewController {
             print(error)
             addAlert(title: "Error", message: "Could not log in. No User Found")
         case .success(()):
-            print("Hi!")
-            
             guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
                 let sceneDelegate = windowScene.delegate as? SceneDelegate, let window = sceneDelegate.window else {return}
             
@@ -166,20 +169,17 @@ class LoginViewController: UIViewController {
         scrollView.contentInset = contentInsets
         scrollView.scrollIndicatorInsets = contentInsets
         
-        //        var utf = userTextField.frame
-        //        utf = scrollView.convert(utf, from: userTextField.superview)
-        //        utf = utf.insetBy(dx: 0.0, dy: -20)
-        //        scrollView.scrollRectToVisible(utf, animated: true)
         
         var lgb = loginButton.frame
         lgb = scrollView.convert(lgb, from: loginButton.superview)
         lgb = lgb.insetBy(dx: 0.0, dy: -20)
         scrollView.scrollRectToVisible(lgb, animated: true)
         
-//        var ptf = passwordTextField.frame
-//        ptf = scrollView.convert(ptf, from: passwordTextField.superview)
-//        ptf = ptf.insetBy(dx: 0.0, dy: -20)
-//        scrollView.scrollRectToVisible(ptf, animated: true)
+    }
+    
+    private func dismissKeyboardWithTap() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        scrollView.addGestureRecognizer(tap)
     }
     
 //    MARK: - Setup UI
