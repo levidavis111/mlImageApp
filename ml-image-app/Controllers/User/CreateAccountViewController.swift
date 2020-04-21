@@ -13,7 +13,7 @@ class CreateAccountViewController: UIViewController {
     
     //    MARK: - UI Elements
     
-    lazy var headerLabel: UILabel = {
+    private lazy var headerLabel: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
         label.text = "Create Account"
@@ -24,7 +24,7 @@ class CreateAccountViewController: UIViewController {
         return label
     }()
     
-    lazy var emailTextField: UITextField = {
+    private lazy var emailTextField: UITextField = {
         let textField = UITextField()
         textField.placeholder = "Enter Email"
         textField.font = UIFont(name: "Verdana", size: 14)
@@ -36,7 +36,7 @@ class CreateAccountViewController: UIViewController {
         return textField
     }()
     
-    lazy var passwordTextField: UITextField = {
+    private lazy var passwordTextField: UITextField = {
         let textField = UITextField()
         textField.placeholder = "Enter Password"
         textField.font = UIFont(name: "Verdana", size: 14)
@@ -49,7 +49,7 @@ class CreateAccountViewController: UIViewController {
         return textField
     }()
     
-    lazy var createButton: UIButton = {
+    private lazy var createButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Create", for: .normal)
         button.setTitleColor(.white, for: .normal)
