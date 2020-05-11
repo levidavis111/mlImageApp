@@ -10,4 +10,6 @@ MLImagePlay uses artificial intelligence and machine learning technology to enab
 
 ## Screenshots
 ### Hair Color
-![image](https://user-images.githubusercontent.com/52180404/81608265-fc4bcd80-93a3-11ea-9e81-16cbe893b004.png | width=225)
+
+<img src="https://user-images.githubusercontent.com/52180404/81608265-fc4bcd80-93a3-11ea-9e81-16cbe893b004.png" height = 400>
+
