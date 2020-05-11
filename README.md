@@ -26,3 +26,5 @@ MLImagePlay uses artificial intelligence and machine learning technology to enab
 ### Pet Sticker
 
 <img src="https://user-images.githubusercontent.com/52180404/81609674-4b92fd80-93a6-11ea-8be2-c5126ec6c240.png" height = 400>
+
+<img src="https://user-images.githubusercontent.com/52180404/81609778-7715e800-93a6-11ea-86df-e6d555a31213.png" height = 400>
