@@ -65,7 +65,9 @@ class HairColorViewController: UIViewController, HairPredictor {
     }
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-        view.bringSubviewToFront(colorSlider)
+        DispatchQueue.main.async {[weak self] in
+            view.bringSubviewToFront(colorSlider)
+        }
     }
     
     private func addSubviews() {
